@@ -1,7 +1,7 @@
 # Личный проект «YetiCave»
 
 * Студент: [Юрий Головин](https://up.htmlacademy.ru/php/6/user/520167).
-* Наставник: `Неизвестно`.
+* Наставник: [Сергей Зубов](https://htmlacademy.ru/profile/serj).
 
 ---
 
