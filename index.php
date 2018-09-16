@@ -91,6 +91,14 @@ $user_avatar = 'img/user.jpg';
 				'url' => 'img/lot-6.jpg'
 			]
 		];
+		
+		function getSumResult( $number ) {
+			$result = ceil( $number );
+			if ( $result > 1000) {
+				$result = number_format( $result, 0, ' ', ' ' ) . ' ₽';
+			} 
+			return $result;
+		};
 	?>
     <section class="promo">
         <h2 class="promo__title">Нужен стафф для катки?</h2>
@@ -121,7 +129,7 @@ $user_avatar = 'img/user.jpg';
 						<div class="lot__state">
 							<div class="lot__rate">
 								<span class="lot__amount">Стартовая цена</span>
-								<span class="lot__cost"><?= $value['price'] ?><b class="rub">р</b></span>
+								<span class="lot__cost"><?= getSumResult( $value['price'] ) ?></span>
 							</div>
 							<div class="lot__timer timer">
 
