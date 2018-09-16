@@ -54,12 +54,42 @@ $user_avatar = 'img/user.jpg';
 <main class="container">
 	<?php $category = ['Доски и лыжи', 'Крепления', 'Ботинки', 'Одежда', 'Инструменты', 'Разное'];
 		$items = [
-			['2014 Rossignol District Snowboard', "$category[0]", '10999', 'img/lot-1.jpg'],
-			['DC Ply Mens 2016/2017 Snowboard', "$category[0]", '159999', 'img/lot-2.jpg'],
-			['Крепления Union Contact Pro 2015 года размер L/XL', "$category[1]", '8000', '	img/lot-3.jpg'],
-			['Ботинки для сноуборда DC Mutiny Charocal', "$category[2]", '10999', 'img/lot-4.jpg'],
-			['Куртка для сноуборда DC Mutiny Charocal', "$category[3]", '7500', 'img/lot-5.jpg'],
-			['Маска Oakley Canopy', "$category[5]", '5400', 'img/lot-6.jpg']
+			0 => [
+				'title' => '2014 Rossignol District Snowboard',
+				'category' => "$category[0]",
+				'price' => '10999',
+				'url' => 'img/lot-1.jpg'
+			],
+			1 => [
+				'title' => 'DC Ply Mens 2016/2017 Snowboard',
+				'category' => "$category[0]",
+				'price' => '159999',
+				'url' => 'img/lot-2.jpg'
+			],
+			2 => [
+				'title' => 'Крепления Union Contact Pro 2015 года размер L/XL',
+				'category' => "$category[1]",
+				'price' => '8000',
+				'url' => 'img/lot-3.jpg'
+			],
+			3 => [
+				'title' => 'Ботинки для сноуборда DC Mutiny Charocal',
+				'category' => "$category[2]",
+				'price' => '10999',
+				'url' => 'img/lot-4.jpg'
+			],
+			4 => [
+				'title' => 'Куртка для сноуборда DC Mutiny Charocal',
+				'category' => "$category[3]",
+				'price' => '7500',
+				'url' => 'img/lot-5.jpg'
+			],
+			5 => [
+				'title' => 'Маска Oakley Canopy',
+				'category' => "$category[5]",
+				'price' => '5400',
+				'url' => 'img/lot-6.jpg'
+			]
 		];
 	?>
     <section class="promo">
@@ -67,9 +97,11 @@ $user_avatar = 'img/user.jpg';
         <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
         <ul class="promo__list">
             <!--заполните этот список из массива категорий-->
-            <li class="promo__item promo__item--boards">
-                <a class="promo__link" href="pages/all-lots.html">Имя категории</a>
-            </li>
+			<?php foreach( $category as $value ): ?>
+				<li class="promo__item promo__item--boards">
+					<a class="promo__link" href="pages/all-lots.html"><?= $value ?></a>
+				</li>
+			<?php endforeach; ?>
         </ul>
     </section>
     <section class="lots">
@@ -78,18 +110,18 @@ $user_avatar = 'img/user.jpg';
         </div>
         <ul class="lots__list">
             <!--заполните этот список из массива с товарами-->
-			<? foreach( $items as $value ): ?>
+			<?php foreach( $items as $key => $value ): ?>
 				<li class="lots__item lot">
 					<div class="lot__image">
-						<img src="<?= $value[3] ?>" width="350" height="260" alt="<?= $value[0] ?>">
+						<img src="<?= $value['url'] ?>" width="350" height="260" alt="<?= $value['title'] ?>">
 					</div>
 					<div class="lot__info">
-						<span class="lot__category"><?= $value[1] ?></span>
-						<h3 class="lot__title"><a class="text-link" href="pages/lot.html"><?= $value[0] ?></a></h3>
+						<span class="lot__category"><?= $value['category'] ?></span>
+						<h3 class="lot__title"><a class="text-link" href="pages/lot.html"><?= $value['title'] ?></a></h3>
 						<div class="lot__state">
 							<div class="lot__rate">
 								<span class="lot__amount">Стартовая цена</span>
-								<span class="lot__cost"><?= $value[2] ?><b class="rub">р</b></span>
+								<span class="lot__cost"><?= $value['price'] ?><b class="rub">р</b></span>
 							</div>
 							<div class="lot__timer timer">
 
@@ -97,7 +129,7 @@ $user_avatar = 'img/user.jpg';
 						</div>
 					</div>
 				</li>
-			<? endforeach; ?>
+			<?php endforeach; ?>
         </ul>
     </section>
 </main>
@@ -107,11 +139,11 @@ $user_avatar = 'img/user.jpg';
     <nav class="nav">
         <ul class="nav__list container">
             <!--заполните этот список из массива категорий-->
-			<? foreach( $category as $value ): ?>
+			<?php foreach( $category as $value ): ?>
 				<li class="nav__item">
 					<a href="pages/all-lots.html"><?= $value ?></a>
 				</li> 
-			<? endforeach; ?>
+			<?php endforeach; ?>
         </ul>
     </nav>
     <div class="main-footer__bottom container">
