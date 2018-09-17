@@ -52,14 +52,64 @@ $user_avatar = 'img/user.jpg';
 </header>
 
 <main class="container">
+	<?php $category = ['Доски и лыжи', 'Крепления', 'Ботинки', 'Одежда', 'Инструменты', 'Разное'];
+		$items = [
+			0 => [
+				'title' => '2014 Rossignol District Snowboard',
+				'category' => "$category[0]",
+				'price' => '10999',
+				'url' => 'img/lot-1.jpg'
+			],
+			1 => [
+				'title' => 'DC Ply Mens 2016/2017 Snowboard',
+				'category' => "$category[0]",
+				'price' => '159999',
+				'url' => 'img/lot-2.jpg'
+			],
+			2 => [
+				'title' => 'Крепления Union Contact Pro 2015 года размер L/XL',
+				'category' => "$category[1]",
+				'price' => '8000',
+				'url' => 'img/lot-3.jpg'
+			],
+			3 => [
+				'title' => 'Ботинки для сноуборда DC Mutiny Charocal',
+				'category' => "$category[2]",
+				'price' => '10999',
+				'url' => 'img/lot-4.jpg'
+			],
+			4 => [
+				'title' => 'Куртка для сноуборда DC Mutiny Charocal',
+				'category' => "$category[3]",
+				'price' => '7500',
+				'url' => 'img/lot-5.jpg'
+			],
+			5 => [
+				'title' => 'Маска Oakley Canopy',
+				'category' => "$category[5]",
+				'price' => '5400',
+				'url' => 'img/lot-6.jpg'
+			]
+		];
+		
+		function getSumResult( $number ) {
+			$result = ceil( $number );
+			if ( $result > 1000) {
+				$result = number_format( $result, 0, ' ', ' ' ) . ' ₽';
+			} 
+			return $result;
+		};
+	?>
     <section class="promo">
         <h2 class="promo__title">Нужен стафф для катки?</h2>
         <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
         <ul class="promo__list">
             <!--заполните этот список из массива категорий-->
-            <li class="promo__item promo__item--boards">
-                <a class="promo__link" href="pages/all-lots.html">Имя категории</a>
-            </li>
+			<?php foreach( $category as $value ): ?>
+				<li class="promo__item promo__item--boards">
+					<a class="promo__link" href="pages/all-lots.html"><?= $value ?></a>
+				</li>
+			<?php endforeach; ?>
         </ul>
     </section>
     <section class="lots">
@@ -68,24 +118,26 @@ $user_avatar = 'img/user.jpg';
         </div>
         <ul class="lots__list">
             <!--заполните этот список из массива с товарами-->
-            <li class="lots__item lot">
-                <div class="lot__image">
-                    <img src="" width="350" height="260" alt="">
-                </div>
-                <div class="lot__info">
-                    <span class="lot__category">Название категории</span>
-                    <h3 class="lot__title"><a class="text-link" href="pages/lot.html">Название товара</a></h3>
-                    <div class="lot__state">
-                        <div class="lot__rate">
-                            <span class="lot__amount">Стартовая цена</span>
-                            <span class="lot__cost">цена<b class="rub">р</b></span>
-                        </div>
-                        <div class="lot__timer timer">
+			<?php foreach( $items as $key => $value ): ?>
+				<li class="lots__item lot">
+					<div class="lot__image">
+						<img src="<?= $value['url'] ?>" width="350" height="260" alt="<?= $value['title'] ?>">
+					</div>
+					<div class="lot__info">
+						<span class="lot__category"><?= $value['category'] ?></span>
+						<h3 class="lot__title"><a class="text-link" href="pages/lot.html"><?= $value['title'] ?></a></h3>
+						<div class="lot__state">
+							<div class="lot__rate">
+								<span class="lot__amount">Стартовая цена</span>
+								<span class="lot__cost"><?= getSumResult( $value['price'] ) ?></span>
+							</div>
+							<div class="lot__timer timer">
 
-                        </div>
-                    </div>
-                </div>
-            </li>
+							</div>
+						</div>
+					</div>
+				</li>
+			<?php endforeach; ?>
         </ul>
     </section>
 </main>
@@ -95,9 +147,11 @@ $user_avatar = 'img/user.jpg';
     <nav class="nav">
         <ul class="nav__list container">
             <!--заполните этот список из массива категорий-->
-            <li class="nav__item">
-                <a href="pages/all-lots.html">Название категории</a>
-            </li>
+			<?php foreach( $category as $value ): ?>
+				<li class="nav__item">
+					<a href="pages/all-lots.html"><?= $value ?></a>
+				</li> 
+			<?php endforeach; ?>
         </ul>
     </nav>
     <div class="main-footer__bottom container">
