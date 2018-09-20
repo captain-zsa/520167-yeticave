@@ -4,7 +4,7 @@
         $result = number_format( $result, 0, ' ', ' ' ) . ' ₽';
     }
     return $result;
-};
+}
 
 function include_template($name, $data) {
     $name = 'templates/' . $name;

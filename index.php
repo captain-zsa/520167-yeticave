@@ -1,9 +1,6 @@
 <?php
     $is_auth = rand(0, 1);
 
-    $user_name = 'Юрий'; // укажите здесь ваше имя
-    $user_avatar = 'img/user.jpg';
-
     $category = ['Доски и лыжи', 'Крепления', 'Ботинки', 'Одежда', 'Инструменты', 'Разное'];
 
     $items = [
@@ -47,11 +44,11 @@
 
     require('functions.php');
 
-    $page_content = include_template( 'templates/index.php',
-        [ 'lots' => $category, 'promoItems' => $items ] );
+    $page_content = include_template( 'index.php',
+        [ 'category' => $category, 'items' => $items ] );
 
-    $layout =  include_template( 'templates/layout.php',
-        [ 'content' => $page_content, 'title' => 'YetiCave' ] );
+    $layout =  include_template( 'layout.php',
+        [ 'content' => $page_content, 'category' => $category, 'title' => 'YetiCave', 'user_name' => 'Юрий', 'user_avatar' => 'img/user.jpg', 'is_auth' => $is_auth ] );
 
     print($layout);
 ?>
