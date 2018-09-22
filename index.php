@@ -44,8 +44,10 @@
 
     require('functions.php');
 
+    $diff_date = getTimeToMidnight();
+
     $page_content = include_template( 'index.php',
-        [ 'category' => $category, 'items' => $items ] );
+        [ 'category' => $category, 'items' => $items , 'lot_timer' => $diff_date] );
 
     $layout =  include_template( 'layout.php',
         [ 'content' => $page_content, 'category' => $category, 'title' => 'YetiCave', 'user_name' => 'Юрий', 'user_avatar' => 'img/user.jpg', 'is_auth' => $is_auth ] );
