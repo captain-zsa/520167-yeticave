@@ -34,6 +34,6 @@ function getTimeToMidnight() {
 }
 
 function esc( $str ) {
-    return htmlspecialchars($str);
+    return htmlspecialchars( $str );
 }
 ?>
