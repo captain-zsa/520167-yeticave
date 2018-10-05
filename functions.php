@@ -32,8 +32,4 @@ function getTimeToMidnight() {
     $minutes = ($minutes == 0) ? ( $minutes . '0') : $minutes;
     return  "$hours : $minutes";
 }
-
-function esc( $str ) {
-    return htmlspecialchars($str);
-}
 ?>
