@@ -6,7 +6,7 @@
         <?php foreach( $category as $key): ?>
             <?php foreach( $key as $value ): ?>
                 <li class="promo__item promo__item--boards">
-                    <a class="promo__link" href="pages/all-lots.html"><?= esc($value) ?></a>
+                    <a class="promo__link" href="pages/all-lots.html"><?= htmlspecialchars( $value ) ?></a>
                 </li>
             <?php endforeach; ?>
         <?php endforeach; ?>
@@ -21,18 +21,18 @@
         <?php foreach( $items as $value ): ?>
             <li class="lots__item lot">
                 <div class="lot__image">
-                    <img src="<?= esc( $value[ 'lot_img' ] ) ?>" width="350" height="260" alt="<?= esc( $value[ 'name' ] ) ?>">
+                    <img src="<?= htmlspecialchars( $value[ 'lot_img' ] ) ?>" width="350" height="260" alt="<?= htmlspecialchars( $value[ 'name' ] ) ?>">
                 </div>
                 <div class="lot__info">
-                    <span class="lot__category"><?= esc( $value[ 'category' ] ) ?></span>
-                    <h3 class="lot__title"><a class="text-link" href="pages/lot.html"><?= esc( $value[ 'name' ] ) ?></a></h3>
+                    <span class="lot__category"><?= htmlspecialchars( $value[ 'category' ] ) ?></span>
+                    <h3 class="lot__title"><a class="text-link" href="pages/lot.html"><?= htmlspecialchars( $value[ 'name' ] ) ?></a></h3>
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая цена</span>
-                            <span class="lot__cost"><?= getSumResult( esc( $value[ 'initial_price' ] ) ) ?></span>
+                            <span class="lot__cost"><?= getSumResult( htmlspecialchars( $value[ 'initial_price' ] ) ) ?></span>
                         </div>
                         <div class="lot__timer timer">
-                            <span><?= esc( $lot_timer ) ?></span>
+                            <span><?= htmlspecialchars( $lot_timer ) ?></span>
                         </div>
                     </div>
                 </div>
